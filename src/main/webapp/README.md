@@ -75,8 +75,11 @@ CREATE TABLE transactions (
 ```
 
 ▶️ How to Run the Project Locally
+
 1️⃣ Clone the Repository
-```git clone https://github.com/vv-verse/ATM-SIMULATOR.git```
+```sql
+git clone https://github.com/vv-verse/ATM-SIMULATOR.git
+```
 
 2️⃣ Open Project in Eclipse
 
@@ -100,8 +103,10 @@ Open MySQL Workbench
 
 Create database:
 
+```sql
 CREATE DATABASE atm_db;
 USE atm_db;
+```
 
 
 Create tables using schema provided above
@@ -123,7 +128,7 @@ String password = "your_password";
 
 Start Tomcat and open browser:
 
-http://localhost:8081/ATM-SIMULATOR/
+```http://localhost:8081/ATM-SIMULATOR/```
 
 ⚠️ Important Notes
 
