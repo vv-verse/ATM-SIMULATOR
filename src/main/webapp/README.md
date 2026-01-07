@@ -159,10 +159,13 @@ Resume projects
 👤 Author
 
 Vivek Kumar
+
 B.Tech (CSE)
+
 GitHub: https://github.com/vv-verse
 
-
+---
 
 📄 License
+
 This project is for educational purposes.
