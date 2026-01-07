@@ -89,6 +89,7 @@ File → Import → Existing Projects into Workspace
 
 Select the cloned project folder
 
+
 3️⃣ Configure Apache Tomcat
 
 Add Apache Tomcat 9
@@ -96,6 +97,7 @@ Add Apache Tomcat 9
 Right click project → Run on Server
 
 Select Tomcat
+
 
 4️⃣ Setup MySQL Database
 
@@ -114,21 +116,27 @@ Create tables using schema provided above
 5️⃣ Configure Database Connection
 
 Update credentials in:
-
+```swift
 src/main/java/com/atm/util/DBConnection.java
-
+```
 
 Example:
-
+```java
 String url = "jdbc:mysql://localhost:3306/atm_db";
+
 String user = "root";
+
 String password = "your_password";
+```
+
 
 6️⃣ Start Server & Access App
 
 Start Tomcat and open browser:
 
 ```http://localhost:8081/ATM-SIMULATOR/```
+
+
 
 ⚠️ Important Notes
 
@@ -145,11 +153,14 @@ Backend practice
 Resume projects
 
 
+
 👤 Author
 
 Vivek Kumar
 B.Tech (CSE)
 GitHub: https://github.com/vv-verse
+
+
 
 📄 License
 This project is for educational purposes.
