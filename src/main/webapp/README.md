@@ -141,13 +141,17 @@ Start Tomcat and open browser:
 ⚠️ Important Notes
 
 This application runs locally
+
 Requires MySQL and Tomcat running
+
 Not deployed on cloud yet
 
 Suitable for:
 
 College projects
+
 Backend practice
+
 Resume projects
 
 ---
