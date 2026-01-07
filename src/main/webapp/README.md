@@ -5,7 +5,7 @@ This project simulates the real-world working of an ATM system with secure authe
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 The ATM Simulator allows users to:
 - Create a bank account
@@ -17,7 +17,7 @@ All core operations are **connected to a MySQL database**, making this a **real 
 
 ---
 
-## 🚀 Features
+## Features
 
 - Account Creation
 - Secure Login (Session-based)
@@ -32,7 +32,7 @@ All core operations are **connected to a MySQL database**, making this a **real 
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 **Backend**
 - Java
@@ -55,7 +55,7 @@ All core operations are **connected to a MySQL database**, making this a **real 
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ```sql
 CREATE TABLE users (
@@ -77,7 +77,7 @@ CREATE TABLE transactions (
 ▶️ How to Run the Project Locally
 
 1️⃣ Clone the Repository
-```sql
+```bash
 git clone https://github.com/vv-verse/ATM-SIMULATOR.git
 ```
 
