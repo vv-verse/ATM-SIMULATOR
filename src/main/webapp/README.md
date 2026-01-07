@@ -136,14 +136,12 @@ Start Tomcat and open browser:
 
 ```http://localhost:8081/ATM-SIMULATOR/```
 
-
+---
 
 ⚠️ Important Notes
 
 This application runs locally
-
 Requires MySQL and Tomcat running
-
 Not deployed on cloud yet
 
 Suitable for:
@@ -152,7 +150,7 @@ College projects
 Backend practice
 Resume projects
 
-
+---
 
 👤 Author
 
