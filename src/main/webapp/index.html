@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="atm-container">
+        <div class="atm-header">
+            <h1>ATM SIMULATOR</h1>
+            <p>Secure Banking System</p>
+        </div>
+
+        <div class="screen">
+            <!-- Welcome Screen -->
+            <div id="welcomeScreen" class="screen-content">
+                <h2>Welcome to ATM</h2>
+                <button class="btn btn-primary" onclick="showScreen('loginScreen')">Login</button>
+                <button class="btn btn-secondary" onclick="showScreen('createAccountScreen')">Create Account</button>
+            </div>
+
+            <!-- Create Account Screen -->
+            <div id="createAccountScreen" class="screen-content hidden">
+                <h2>Create New Account</h2>
+                <div id="createMessage"></div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="newName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Account Number</label>
+                    <input type="text" id="newAccountNumber" placeholder="Create 6-digit account number">
+                </div>
+                <div class="form-group">
+                    <label>PIN</label>
+                    <input type="password" id="newPassword" placeholder="Create 4-digit PIN" maxlength="4">
+                </div>
+                <div class="form-group">
+                    <label>Initial Deposit</label>
+                    <input type="number" id="initialDeposit" placeholder="Enter initial amount">
+                </div>
+                <button class="btn btn-primary" onclick="createAccount()">Create Account</button>
+                <button class="btn btn-secondary" onclick="showScreen('welcomeScreen')">Back</button>
+            </div>
+
+            <!-- Login Screen -->
+            <div id="loginScreen" class="screen-content hidden">
+                <h2>Account Login</h2>
+                <div id="loginMessage"></div>
+                <div class="form-group">
+                    <label>Account Number</label>
+                    <input type="text" id="accountNumber" placeholder="Enter account number">
+                </div>
+                <div class="form-group">
+                    <label>PIN</label>
+                    <input type="password" id="password" placeholder="Enter PIN" maxlength="4">
+                </div>
+                <button class="btn btn-primary" onclick="login()">Login</button>
+                <button class="btn btn-secondary" onclick="showScreen('welcomeScreen')">Back</button>
+                <div class="link-text">
+                    Don't have an account? <a href="#" onclick="showScreen('createAccountScreen'); return false;">Create one</a>
+                </div>
+            </div>
+
+            <!-- Main Menu Screen -->
+            <div id="mainMenuScreen" class="screen-content hidden">
+                <h2>Welcome, <span id="userName"></span>!</h2>
+                <div class="balance-display">
+                    <h3>Current Balance</h3>
+                    <div class="amount">$<span id="currentBalance">0.00</span></div>
+                </div>
+                <div class="transaction-buttons">
+                    <button class="btn btn-success" onclick="showScreen('depositScreen')">Deposit</button>
+                    <button class="btn btn-danger" onclick="showScreen('withdrawScreen')">Withdraw</button>
+                </div>
+                <button class="btn btn-primary" onclick="showScreen('transferScreen')">Transfer Money</button>
+                <button class="btn btn-primary" onclick="showScreen('changePinScreen')">Change PIN</button>
+                <button class="btn btn-primary" onclick="showScreen('historyScreen')">Transaction History</button>
+                <button class="btn btn-warning" onclick="logout()">Logout</button>
+            </div>
+
+            <!-- Withdraw Screen -->
+            <div id="withdrawScreen" class="screen-content hidden">
+                <h2>Withdraw Cash</h2>
+                <div id="withdrawMessage"></div>
+                <div class="balance-display">
+                    <h3>Available Balance</h3>
+                    <div class="amount">$<span id="withdrawBalance">0.00</span></div>
+                </div>
+                <div class="form-group">
+                    <label>Enter Amount</label>
+                    <input type="number" id="withdrawAmount" placeholder="Enter amount to withdraw">
+                </div>
+                <button class="btn btn-danger" onclick="withdraw()">Withdraw</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenuScreen')">Cancel</button>
+            </div>
+
+            <!-- Deposit Screen -->
+            <div id="depositScreen" class="screen-content hidden">
+                <h2>Deposit Money</h2>
+                <div id="depositMessage"></div>
+                <div class="balance-display">
+                    <h3>Current Balance</h3>
+                    <div class="amount">$<span id="depositBalance">0.00</span></div>
+                </div>
+                <div class="form-group">
+                    <label>Enter Amount</label>
+                    <input type="number" id="depositAmount" placeholder="Enter amount to deposit">
+                </div>
+                <button class="btn btn-success" onclick="deposit()">Deposit</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenuScreen')">Cancel</button>
+            </div>
+
+            <!-- Transfer Money Screen -->
+            <div id="transferScreen" class="screen-content hidden">
+                <h2>Transfer Money</h2>
+                <div id="transferMessage"></div>
+                <div class="balance-display">
+                    <h3>Available Balance</h3>
+                    <div class="amount">$<span id="transferBalance">0.00</span></div>
+                </div>
+                <div class="form-group">
+                    <label>Recipient Account Number</label>
+                    <input type="text" id="recipientAccount" placeholder="Enter recipient's account number">
+                </div>
+                <div class="form-group">
+                    <label>Transfer Amount</label>
+                    <input type="number" id="transferAmount" placeholder="Enter amount to transfer">
+                </div>
+                <div class="form-group">
+                    <label>Confirm PIN</label>
+                    <input type="password" id="transferPin" placeholder="Enter your PIN" maxlength="4">
+                </div>
+                <button class="btn btn-primary" onclick="transferMoney()">Transfer</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenuScreen')">Cancel</button>
+            </div>
+
+            <!-- Change PIN Screen -->
+            <div id="changePinScreen" class="screen-content hidden">
+                <h2>Change PIN</h2>
+                <div id="changePinMessage"></div>
+                <div class="form-group">
+                    <label>Current PIN</label>
+                    <input type="password" id="currentPin" placeholder="Enter current PIN" maxlength="4">
+                </div>
+                <div class="form-group">
+                    <label>New PIN</label>
+                    <input type="password" id="newPin" placeholder="Enter new 4-digit PIN" maxlength="4">
+                </div>
+                <div class="form-group">
+                    <label>Confirm New PIN</label>
+                    <input type="password" id="confirmNewPin" placeholder="Confirm new PIN" maxlength="4">
+                </div>
+                <button class="btn btn-primary" onclick="changePin()">Change PIN</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenuScreen')">Cancel</button>
+            </div>
+
+            <!-- Transaction History Screen -->
+            <div id="historyScreen" class="screen-content hidden">
+                <h2>Transaction History</h2>
+                <div class="transaction-history" id="transactionHistory">
+                    <p style="color: #a0aec0; text-align: center;">No transactions yet</p>
+                </div>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenuScreen')">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
